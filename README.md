@@ -6,6 +6,8 @@ The ChatGPT clone uses Fullmetal and express.js to run a server requesting clien
 
 Clone the repository to your local machine, then create the `.env` file in the root directory of the project and create the `FULLMETAL_API_KEY` variable in it, and pass your private FULLMETAL key from your account at https://app.fullmetal.ai/
 
+Also, enter the value for the `FullmetalApiKey` key in the src/config.js file from your account at https://app.fullmetal.ai/.
+
 Install dependencies.
 ```bash
   npm i
