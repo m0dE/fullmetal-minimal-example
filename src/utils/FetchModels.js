@@ -11,6 +11,9 @@ const fetchModelsUtility = async () => {
     }
 
     const result = await response.json();
+    if (result && result.status === 403) {
+      return result;
+    }
 
     return result.models || [];
   } catch (error) {

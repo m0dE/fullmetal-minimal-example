@@ -8,6 +8,7 @@ import {
   disconnectWebSocket,
   emitPrompt,
 } from '../../utils/WebSocketService';
+import { toast } from 'react-toastify';
 
 const ChatPage = () => {
   const [previousChats, setPreviousChats] = useState([]);
@@ -29,7 +30,9 @@ const ChatPage = () => {
 
     (async () => {
       const modelsArray = await fetchModelsUtility();
-      setModels(modelsArray);
+      if (modelsArray.status === 403) {
+        toast.error(modelsArray.message);
+      } else setModels(modelsArray);
     })();
   }, []);
 
@@ -92,6 +95,7 @@ const ChatPage = () => {
         }
       },
       (message) => {
+        console.log(message);
         toast.error(message);
         setMessage('');
         setIsResponseLoading(false);
